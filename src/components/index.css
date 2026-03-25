@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 30% 97%;
+    --foreground: 20 20% 12%;
+
+    --card: 30 25% 95%;
+    --card-foreground: 20 20% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 20% 12%;
+
+    --primary: 20 20% 12%;
+    --primary-foreground: 30 30% 97%;
+
+    --secondary: 30 20% 92%;
+    --secondary-foreground: 20 20% 12%;
+
+    --muted: 30 15% 90%;
+    --muted-foreground: 20 8% 50%;
+
+    --accent: 350 60% 68%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 15% 88%;
+    --input: 30 15% 88%;
+    --ring: 350 60% 68%;
+
+    --radius: 0.75rem;
+
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 20 15% 8%;
+    --foreground: 30 30% 97%;
+    --card: 20 15% 10%;
+    --card-foreground: 30 30% 97%;
+    --popover: 20 15% 10%;
+    --popover-foreground: 30 30% 97%;
+    --primary: 30 30% 97%;
+    --primary-foreground: 20 15% 8%;
+    --secondary: 20 12% 16%;
+    --secondary-foreground: 30 30% 97%;
+    --muted: 20 12% 18%;
+    --muted-foreground: 30 8% 55%;
+    --accent: 350 60% 68%;
+    --accent-foreground: 0 0% 100%;
+    --border: 20 12% 20%;
+    --input: 20 12% 20%;
+    --ring: 350 60% 68%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
+  ::selection {
+    background: hsl(var(--accent) / 0.3);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+}
+
+@layer components {
+  /* Hide default cursor on desktop when custom cursor is active */
+  @media (pointer: fine) {
+    * {
+      cursor: none !important;
+    }
+  }
+
+  .btn-reserve {
+    @apply inline-block px-7 py-3 text-xs tracking-[0.2em] uppercase font-body font-medium bg-accent text-accent-foreground rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg;
+  }
+  .btn-outline-light {
+    @apply inline-block px-7 py-3 text-xs tracking-[0.2em] uppercase font-body font-medium border border-accent-foreground/50 text-accent-foreground rounded-full transition-all duration-300 hover:bg-accent-foreground/10;
+  }
+  .section-title {
+    @apply text-4xl md:text-5xl font-display text-foreground tracking-wide;
+  }
+  .section-subtitle {
+    @apply text-sm font-body text-muted-foreground font-light leading-relaxed;
+  }
+  .page-hero {
+    @apply relative h-[70vh] md:h-[80vh] w-full overflow-hidden flex items-center justify-center;
+  }
+  .page-hero-overlay {
+    @apply absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/40;
+  }
+}
